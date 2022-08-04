@@ -60,38 +60,28 @@ button:hover{
 .color-acento{
     color: #FACDED;
 }
-/*header{
-    background-color: black;
-}
 
-header .container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header .logo{
-    margin: 0;
-}
-
-header nav{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding-bottom: 25px ;
-}
-
-header a {
-    padding: 5px 12px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #FACDED;
-}*/
 .navbar{
     background-color: #000;
 }
 .navbar-collapse{
     flex-grow: initial;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FACDED;
+}
+
+#somos-bravas p{
+    animation: ease-in animat 1s;
+}
+
+@keyframes animat {
+    0% {
+        transform: scale(0); }
+    100% {
+        transform: scale(1); } }
+
 
 #hero{
     display: flex;
@@ -181,29 +171,19 @@ header a {
 }
 
 
-.productos_container{
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    grid-template-columns: repeat(4,fr);
-    justify-items: center;
-    grid-row-gap: 10px;
+.btn{
+    display: block;
+    color: #fff;
+    background-color: #FACDED;
+    border-color: #FACDED;
 }
 
-.productos_container .img-main{
-    width: 200px;
-    height: 200px;
-}
-
-.items{
-    width: 90px;
-    text-align: center;
+.row{
     margin: 100px;
 }
-
 .img-main{
     border-radius: 10px;
 }
-
 
 
 #comocomprar .container{
@@ -364,22 +344,14 @@ footer p{
 }
 
 
+
 .copyright{
     color: #000;
     opacity: 0.3;
     text-align: center;
 }
 
-@media (min-width:720px){
-    /*header .container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    header nav{
-        flex-direction: row;
-        padding-bottom:0;
-        padding-right: 20px;
-    }*/
+@media (min-width:576px){
     
     #somos-bravas .container{
         display: flex;
