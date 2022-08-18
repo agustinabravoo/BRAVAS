@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$colorPrincipal: #FACDED;
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -8,10 +11,14 @@
 html{
     scroll-behavior: smooth;
 }
-
+$estilos: (
+    rosa: #FACDED,
+    fondo: #ffffff,
+    negro: #000,
+);
 body{
-    font-family: 'Didact Gothic', sans-serif';
-    
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: map-get($estilos, fondo);
 }
 
 h1{
@@ -24,7 +31,7 @@ h2{
 
 h3{
     font-size: 2em;
-}
+} 
 
 p{
     font-size: 1.25em;
@@ -36,82 +43,91 @@ li{
     font-size: 1.25em;
 }
 
-.prod-destacados{
-    width: 100%;
+.row{
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-    padding: 50px 0;
-}
-.prod-destacados h1{
-    width: 100%;
-    color: #000;
-    font-family: 'Bebas Neue', cursive;
-    text-align: center;
-}
-.card{
-    width: 33.333333%;
-}
-.destacados{
-    font-family: sans-serif;
-    width: 30%;
+    padding: 0 4px;
 }
 
-.destacados .img-container{
-    overflow: hidden;
-    height: 200px;
-    position: relative;
-    border-radius: 15px;
+.title-dest{
+    text-align: center;
 }
-.destacados .img-container img{
-    width: 100%;
-    position: absolute;
-    top: -60%;
-    transition: all 0.5s;
-}
-.destacados:hover .img-container img{
-    transform: scale(1.2);
-}
-.destacados .img-container .promo{
-    position: absolute;
-    top: 10px;
-    left: 0;
-    font-size: 20px;
-    background:#FACDED;
-    padding: 15px;
-    color: black;
-    border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
-}
-.destacados .info-container{
+.container-prod{
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
     justify-content: center;
 }
-.destacados .info-container h3{
-    margin: 0;
+
+
+.container-dest{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 2fr 2fr;
 }
-.destacados .info-container h3,
-.destacados .info-container strong,
-.destacados .info-container span{
-    padding: 5px 15px;
-    width: 100%;
+.product-card{
+    width:38%;
+    margin:50px auto;
+    background: map-get($estilos, fondo );
+    box-shadow: 0px 0px 8px 0px #00000073;
+    
 }
-.destacados .add-cart{
-    margin-top: 2px;
-    text-decoration: none;
-    color: white;
-    background-color: black;
-    padding: 15px;
-    border: 1px solid black;
-    border-radius: 25px;
+
+.product-card .img-product{
+    position:relative;
+    margin:0px;
 }
-.destacados .add-cart:hover{
-    color: black;
-    background-color: transparent;
-    border: 1px solid black;
+
+@mixin product-size($ancho,$alto) {
+    width:$ancho;
+    height: $alto;
 }
+
+.product-card .img-product img{width:100%;}
+.product-card .img-product .whishlist{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    background: $colorPrincipal;
+    @include product-size(40px,40px);
+    padding:8px;
+    border-radius:50%;
+    text-align: center;
+}
+
+.product-card .info-product{padding:0px 25px;}
+.product-card .info-product .title-product{
+    font-size:18px;
+    font-weight:700;
+    color:#131313;
+}
+.product-card .info-product .description{
+    font-size:15px;
+    font-weight:400;
+    margin-bottom: 30px;
+    color:#414141;
+}
+.product-card .info-product .price{
+    background: $colorPrincipal;
+    padding:8px 10px;
+    border-radius:30px;
+    font-weight:400;
+    font-size:14px;
+}
+
+.boton-cart{
+    background: #ffcee7;
+    color:#ffffff;
+    padding:10px 0px;
+    margin-top:30px;
+    text-decoration:none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+
+
 
 
 button{
@@ -119,10 +135,10 @@ button{
     font-weight: bold;
     padding: 10px 40px;
     border-radius: 15px;
-    border: 2px solid #FACDED;
-    box-shadow: 2px 2px 10px #FACDED;
-    color: white;
-    background-color: #FACDED;
+    border: 2px solid $colorPrincipal;
+    box-shadow: 2px 2px 10px $colorPrincipal;
+    color: #ffffff;
+    background-color: $colorPrincipal;
 }
 
 button:hover{
@@ -136,7 +152,7 @@ button:hover{
 }
 
 .color-acento{
-    color: #FACDED;
+    color: map-get($estilos , rosa);
 }
 
 .navbar{
@@ -147,11 +163,7 @@ button:hover{
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #FACDED;
-}
-
-#somos-bravas p{
-    animation: ease-in animat 1s;
+    color: $colorPrincipal;
 }
 
 @keyframes animat {
@@ -159,6 +171,27 @@ button:hover{
         transform: scale(0); }
     100% {
         transform: scale(1); } }
+
+.content-section h2 p{
+    animation: ease-in animat 1s;
+}
+
+.bio-card {
+    margin: 20px 10px 0px 10px; 
+}
+.bio-card__column2 {
+    padding: 20px;
+    letter-spacing: 2px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+}
+
+.news-card {
+    padding: 20px;
+    background-color: $colorPrincipal;
+    color: white;
+    text-align: center; 
+}
 
 
 #hero{
@@ -195,7 +228,11 @@ button:hover{
 
 #categorias{
     text-align: center;
-    
+    h2{
+        margin-top: 5px;
+        font-size: 3em;
+        font-family: 'Bebas Neue', cursive;
+    }
 }
 
 #categorias .container{
@@ -206,11 +243,7 @@ button:hover{
     flex-wrap: wrap;
     justify-content: space-around;
 }
-#categorias h2{
-    margin-top: 5px;
-    font-size: 3em;
-    font-family: 'Bebas Neue', cursive;
-}
+
 
 #categorias .caja{
     background-position: center center;
@@ -257,8 +290,8 @@ button:hover{
 .btn{
     display: block;
     color: #fff;
-    background-color: #FACDED;
-    border-color: #FACDED;
+    background-color: $colorPrincipal;
+    border-color: $colorPrincipal;
 }
 
 .row{
@@ -270,23 +303,51 @@ button:hover{
 }
 
 
-#comocomprar .container{
-    background-image: url('../assets/background/gradient-pastel-sky-background_52683-60513.webp');
-    background-position: center;
-    background-size: cover;
-    text-align: center;
-    padding: 200px 12px;
+
+.galery-card {
+    padding-top: 20px; 
 }
 
-#comocomprar li{
-    margin: 12px 0px;
-    font-weight: bold;
+.galery-card .row .col {
+    @extend .galery-card
 }
 
-#comocomprar h1{
-    text-align: center;
-    font-family: 'Bebas Neue', cursive;
+.galery-card .row .col img {
+    transition: 0.3s ease all; 
 }
+.galery-card .row .col img:hover {
+    transform: scale(1.07); 
+}
+.galery-card__galery-img {
+    cursor: pointer
+}
+
+.modal-body {
+    background-color: #191818;
+    border: 2px solid #232323;
+}
+
+.full-image {
+    width: 100%; 
+}
+.close-modal {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    font-size: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    opacity: 1; 
+}
+
+#wrapper, #main {
+    background-color: #fff;
+    position: relative;
+}
+
 
 .contact{
     position: relative;
@@ -337,16 +398,17 @@ button:hover{
     margin-top: 20px;
 }
 
-.contacto h3 {
-    color: #FACDED;
-    font-weight: 500;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
+
 .contacto{
     padding: 40px;
     background: #000;
-    box-shadow: 0 5px 35px #FACDED;
+    box-shadow: 0 5px 35px $colorPrincipal;
+    h3 {
+        color: map-get($estilos, rosa);
+        font-weight: 500;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
 }
 
 .formBox {
@@ -371,7 +433,7 @@ button:hover{
 }
 
 .inputBox span {
-    color: #FACDED;
+    color: $colorPrincipal;
     margin-top: 10px;
     margin-bottom: 5px;
     font-weight: 500;
@@ -397,7 +459,7 @@ button:hover{
 }
 
 .inputBox input[type="submit"]{
-    background: #FACDED;
+    background: $colorPrincipal;
     border: none;
     font-size: 1.1em;
     font-weight: 500;
@@ -407,7 +469,7 @@ button:hover{
 }
 
 .info {
-    background: #FACDED;
+    background: $colorPrincipal;
 }
 
 .info h3{
@@ -453,7 +515,7 @@ button:hover{
 }
 
 .sci li a {
-    color: black;
+    color: map-get($estilos , negro);
     font-size: 2em;
 }
 
@@ -482,13 +544,13 @@ footer{
         align-items: center;
         flex-direction: column;
         flex-wrap: wrap;
+        p{
+            margin: 0;
+            padding: 12px;
+            color: black;
+        }
 }
 
-footer p{
-    margin: 0;
-    padding: 12px;
-    color: black;
-}
 
 .logo-footer{
     height: 100px;
@@ -543,7 +605,7 @@ footer p{
 }
 @media (max-width: 991px){
     body{
-        background: antiquewhite;
+        background: rgb(255, 255, 255);
     }
     .contact{
         padding: 20px;
@@ -589,9 +651,6 @@ footer p{
         justify-content: center;
     }
 
-    #somos-bravas h2{
-        margin-top: 0px;
-    }
 
     #somos-bravas .img-container{
         background-image: url('../assets/background/jose-mizrahi-OKWWYf3yLCo-unsplash.jpg');
@@ -616,8 +675,9 @@ footer p{
     }
 
     .productos_container{
-        grid-template-columns: repeat(4,2fr);
-        grid-template-rows: repeat(1, fr);
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(2, 1fr);
     }
     .contact__image{
     width: 100%;
@@ -627,6 +687,11 @@ footer p{
         font-size: 22px;
         
     }
-
+    
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 2px;
+    }
 }
-
